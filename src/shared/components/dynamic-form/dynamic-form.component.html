@@ -1,0 +1,22 @@
+<div class="container">
+
+    @for (item of model; track $index) 
+    { @switch (item.type) { 
+
+        @case (formFieldType.NEW_PASSWORD) {
+            <app-custome-input-password  [model]="item" (valueChanged)="getPasswordData($event,item)" />
+        }
+
+        @case
+            (formFieldType.TEXT) {
+                <app-custom-input-text [formControl]="dynamicForm.get(item.name)" [model]="item" />
+            }
+        } 
+    }
+        <div class="submit-section">
+
+            <button (click)="submitForm($event)" > submit </button>
+        </div>
+     
+</div>
+    
